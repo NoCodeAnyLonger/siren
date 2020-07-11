@@ -26,6 +26,10 @@ class PayInfo: HandyJSON {
         case paying = 1
         case paid = 2
         
+        var sortPriority: Int { 
+            return 100 - self.rawValue
+        }
+        
         var description: String {
             switch self {
             case .paid:

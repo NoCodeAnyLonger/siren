@@ -67,20 +67,34 @@ class ViewController: UIViewController {
     func refreshOrders() {
         NetworkService.queryOrders(success: { (value) in
             self.data = value ?? []
+            self.sortPayInfos()
             self.tableView.reloadData()
+            if self.data.count == 0 {
+                showAlert(title: "没有订单", message: nil, actions: UIAlertAction(title: "好", style: .cancel, handler: nil))
+            }
         }) { (error) in
             showAlert(title: "获取订单失败", message: nil, actions: UIAlertAction(title: "好", style: .cancel, handler: nil))
+        }
+    }
+    
+    private func handlePaying(payInfo: PayInfo) {
+        NetworkService.updateOrder(with: payInfo.order_id, status: .paying, success: { [weak self] (params) in
+            payInfo.status = .paying
+            self?.sortPayInfos()
+            self?.tableView.reloadData()
+        }) { (error) in
+            showAlert(title: "更新订单失败", message: nil, actions: UIAlertAction(title: "好", style: .cancel, handler: nil))
         }
     }
     
     private func handleSuccess(payInfo: PayInfo) {
         NetworkService.updateOrder(with: payInfo.order_id, status: .paid, success: { [weak self] (params) in
             payInfo.status = .paid
+            self?.sortPayInfos()
             self?.tableView.reloadData()
         }) { (error) in
             showAlert(title: "更新订单失败", message: nil, actions: UIAlertAction(title: "好", style: .cancel, handler: nil))
         }
-        
     }
 
 }
@@ -99,7 +113,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100.0
+        let info = data[indexPath.row]
+        return PayInfoCell.fitSize(size: tableView.bounds.size, for: info).height
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -109,6 +124,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             showAlert(title: "已支付", message: "", actions: UIAlertAction(title: "好", style: .default, handler: nil))
             return
         }
+        handlePaying(payInfo: info)
         if info.paytype == "微信" {
             guard let wxinfo = info.wxpayInfo else {
                 return
@@ -140,6 +156,15 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
                     self?.handleSuccess(payInfo: info)
                 }
             }
+        }
+    }
+    
+    func sortPayInfos() {
+        data.sort { (pi1, pi2) -> Bool in
+            if pi1.status == pi2.status {
+                return pi1.ordertime < pi2.ordertime
+            }
+            return pi1.status.sortPriority > pi2.status.sortPriority
         }
     }
     

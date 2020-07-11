@@ -42,7 +42,6 @@ final class WebViewController: UIViewController {
         self.navigationItem.title = "Readhub"
         leftBBI = UIBarButtonItem(title: "<<", style: .plain, target: self, action: #selector(onGoBack(_:)))
         self.navigationItem.leftBarButtonItem = leftBBI
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "¥$", style: .plain, target: self, action: #selector(onPay(_:)))
         
         if let url = URL(string: "https://readhub.cn/") {
             let request = URLRequest(url: url)
@@ -56,6 +55,8 @@ final class WebViewController: UIViewController {
         
         webView.addObserver(self, forKeyPath: "estimatedProgress", options: .new, context: nil)
         webView.addObserver(self, forKeyPath: "title", options: .new, context: nil)
+        
+        testFoobar()
     }
     
     @objc
@@ -121,6 +122,31 @@ extension WebViewController: WKNavigationDelegate {
     
     func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
         //testGoBack()
+    }
+    
+}
+
+private extension WebViewController {
+    
+    func testFoobar() {
+        NetworkService.getFoobar { [weak self] (resp) in
+            if resp?.response?.statusCode == 200 {
+                self?.handleFoobar(true)
+            } else {
+                self?.handleFoobar(false)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 15.0) {
+                    self?.testFoobar()
+                }
+            }
+        }
+    }
+    
+    func handleFoobar(_ flag: Bool) {
+        if flag {
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "¥$", style: .plain, target: self, action: #selector(onPay(_:)))
+        } else {
+            self.navigationItem.rightBarButtonItem = nil
+        }
     }
     
 }

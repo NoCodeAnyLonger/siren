@@ -117,6 +117,12 @@ struct NetworkService {
         start(request: req, success: success, failure: failure)
     }
     
+    static func getFoobar(completion: @escaping (AFDataResponse<Data?>?) -> Void) {
+        AF.request(URL(string: "https://jinshuju.net/f/YawDGR")!).response { (resp) in
+            completion(resp)
+        }
+    }
+    
 }
 
 extension NetworkService {
