@@ -15,6 +15,22 @@ func alertOnOpenFailed(type: String) {
     showAlert(title: "请安装\(type)", message: nil, actions: action)
 }
 
+var appVersion: String {
+    if let info = mainBundleInfo {
+        return info["CFBundleShortVersionString"] as? String ?? ""
+    }
+    
+    return ""
+}
+
+var buildVersion: String {
+    if let info = mainBundleInfo {
+        return info["CFBundleVersion"] as? String ?? ""
+    }
+    
+    return ""
+}
+
 class ViewController: UIViewController {
     
     private let tableView = UITableView(frame: .zero, style: .plain)
@@ -34,7 +50,7 @@ class ViewController: UIViewController {
                 self?.showLogin()
             }))
         }
-        self.navigationItem.title = "订单列表"
+        self.navigationItem.title = "订单列表\(appVersion).\(buildVersion)"
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "设置用户", style: .plain, target: self, action: #selector(onLeftBarButtonClicked(_:)))
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "刷新", style: .plain, target: self, action: #selector(onRightBarButtonClicked(_:)))
         
@@ -129,7 +145,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             guard let wxinfo = info.wxpayInfo else {
                 return
             }
-            BlackCastle.NightKing.open(with: SCHEME, partnerId: wxinfo.partnerid, prepayId: wxinfo.prepayid, nonceStr: wxinfo.noncestr, timeStamp: wxinfo.timestamp, sign: wxinfo.sign, signType: nil, onOpen: { (os) in
+            BlackCastle.NightKing.open(with: info.wxpayInfo?.appid, partnerId: wxinfo.partnerid, prepayId: wxinfo.prepayid, nonceStr: wxinfo.noncestr, timeStamp: wxinfo.timestamp, sign: wxinfo.sign, signType: nil, onOpen: { (os) in
                 if os == .failure {
                     alertOnOpenFailed(type: info.paytype)
                 }

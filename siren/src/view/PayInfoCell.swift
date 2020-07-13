@@ -85,6 +85,7 @@ final class PayInfoCell: UITableViewCell {
             attrStr.append(statusAttrStr)
             timeLabel.attributedText = attrStr
         }
+        self.setNeedsLayout()
     }
     
 }
