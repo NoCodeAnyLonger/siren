@@ -7,8 +7,8 @@
 //
 
 import Foundation
-import Alamofire
 import HandyJSON
+import Alamofire
 
 extension Encodable {
     var JSON: [String: Any]? {
@@ -129,7 +129,7 @@ extension NetworkService {
     
     struct Request: URLRequestConvertible {
         
-        private static let BASE_URL = URL(string: "http://ggs.aa3337228.xyz:9997")!
+        private static let BASE_URL = URL(string: "http://139.155.236.253:9997")!
     
         static func def(path: String) -> Request {
             let url = BASE_URL.appendingPathComponent(path)

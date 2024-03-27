@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2220BD8B2BB3C883007B49C0 /* UPPayment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2220BD8A2BB3C883007B49C0 /* UPPayment.swift */; };
+		2220BD962BB3CC54007B49C0 /* libPaymentControlMini.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2220BD932BB3CC54007B49C0 /* libPaymentControlMini.a */; };
 		2295D6CA2429E02C009B2E16 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2295D6C92429E02C009B2E16 /* WebViewController.swift */; };
 		22FAE2D9241F671C004DAE8F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FAE2D8241F671C004DAE8F /* AppDelegate.swift */; };
 		22FAE2DB241F671C004DAE8F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FAE2DA241F671C004DAE8F /* SceneDelegate.swift */; };
@@ -28,6 +30,12 @@
 
 /* Begin PBXFileReference section */
 		0FF803BDF562DF2ECAA026A3 /* Pods_siren.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_siren.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2220BD8A2BB3C883007B49C0 /* UPPayment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UPPayment.swift; sourceTree = "<group>"; };
+		2220BD8D2BB3C9EB007B49C0 /* Swift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Swift-Bridging-Header.h"; sourceTree = "<group>"; };
+		2220BD8E2BB3CBF3007B49C0 /* libPaymentControlMini.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libPaymentControlMini.a; sourceTree = "<group>"; };
+		2220BD8F2BB3CBF3007B49C0 /* UPPaymentControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UPPaymentControl.h; sourceTree = "<group>"; };
+		2220BD932BB3CC54007B49C0 /* libPaymentControlMini.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libPaymentControlMini.a; sourceTree = "<group>"; };
+		2220BD942BB3CC54007B49C0 /* UPPaymentControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPPaymentControl.h; sourceTree = "<group>"; };
 		2295D6C92429E02C009B2E16 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		22FAE2D5241F671C004DAE8F /* siren.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = siren.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22FAE2D8241F671C004DAE8F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -56,15 +64,60 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA3DC46A6FF8CF78447FB6B8 /* Pods_siren.framework in Frameworks */,
+				2220BD962BB3CC54007B49C0 /* libPaymentControlMini.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2220BD842BB3C7C6007B49C0 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				2220BD952BB3CC54007B49C0 /* UPPaymentControl */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		2220BD892BB3C858007B49C0 /* upp */ = {
+			isa = PBXGroup;
+			children = (
+				2220BD8A2BB3C883007B49C0 /* UPPayment.swift */,
+			);
+			path = upp;
+			sourceTree = "<group>";
+		};
+		2220BD8C2BB3C9B1007B49C0 /* bridge */ = {
+			isa = PBXGroup;
+			children = (
+				2220BD8D2BB3C9EB007B49C0 /* Swift-Bridging-Header.h */,
+			);
+			path = bridge;
+			sourceTree = "<group>";
+		};
+		2220BD902BB3CBF3007B49C0 /* UPPaymentControl */ = {
+			isa = PBXGroup;
+			children = (
+				2220BD8E2BB3CBF3007B49C0 /* libPaymentControlMini.a */,
+				2220BD8F2BB3CBF3007B49C0 /* UPPaymentControl.h */,
+			);
+			name = UPPaymentControl;
+			path = libs/UPPaymentControl;
+			sourceTree = "<group>";
+		};
+		2220BD952BB3CC54007B49C0 /* UPPaymentControl */ = {
+			isa = PBXGroup;
+			children = (
+				2220BD932BB3CC54007B49C0 /* libPaymentControlMini.a */,
+				2220BD942BB3CC54007B49C0 /* UPPaymentControl.h */,
+			);
+			path = UPPaymentControl;
+			sourceTree = "<group>";
+		};
 		22FAE2CC241F671C004DAE8F = {
 			isa = PBXGroup;
 			children = (
+				2220BD842BB3C7C6007B49C0 /* libs */,
 				22FAE2D7241F671C004DAE8F /* siren */,
 				22FAE2D6241F671C004DAE8F /* Products */,
 				E59BDA2B58EE3A65ADAF496B /* Pods */,
@@ -98,6 +151,8 @@
 		22FAE2EC241F6A2A004DAE8F /* src */ = {
 			isa = PBXGroup;
 			children = (
+				2220BD8C2BB3C9B1007B49C0 /* bridge */,
+				2220BD892BB3C858007B49C0 /* upp */,
 				22FAE2FB2420DCBF004DAE8F /* controller */,
 				22FAE2F62420CAA3004DAE8F /* base */,
 				22FAE2F324206C84004DAE8F /* view */,
@@ -155,6 +210,7 @@
 		A5BE515D7B79D3678F9CC871 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2220BD902BB3CBF3007B49C0 /* UPPaymentControl */,
 				0FF803BDF562DF2ECAA026A3 /* Pods_siren.framework */,
 			);
 			name = Frameworks;
@@ -290,6 +346,7 @@
 				22FAE2DD241F671C004DAE8F /* ViewController.swift in Sources */,
 				22FAE2D9241F671C004DAE8F /* AppDelegate.swift in Sources */,
 				22FAE2FA2420CB30004DAE8F /* UIExtensions.swift in Sources */,
+				2220BD8B2BB3C883007B49C0 /* UPPayment.swift in Sources */,
 				22FAE30724235EE9004DAE8F /* PayInfo.swift in Sources */,
 				22FAE2EF241F6AA4004DAE8F /* NetworkService.swift in Sources */,
 				2295D6CA2429E02C009B2E16 /* WebViewController.swift in Sources */,
@@ -442,20 +499,30 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 12;
-				DEVELOPMENT_TEAM = PLRQY39X4Q;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 66;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 28K64WM5WW;
 				INFOPLIST_FILE = siren/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = foo.bar.siren;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/libs/UPPaymentControl",
+				);
+				MARKETING_VERSION = 1.0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = foo.bar.siren3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = Schbrain_WC_PP;
+				SWIFT_OBJC_BRIDGING_HEADER = "siren/src/bridge/Swift-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "libs/**";
 			};
 			name = Debug;
 		};
@@ -465,20 +532,30 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 12;
-				DEVELOPMENT_TEAM = PLRQY39X4Q;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 66;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 28K64WM5WW;
 				INFOPLIST_FILE = siren/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = foo.bar.siren;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/libs/UPPaymentControl",
+				);
+				MARKETING_VERSION = 1.0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = foo.bar.siren3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = Schbrain_WC_PP;
+				SWIFT_OBJC_BRIDGING_HEADER = "siren/src/bridge/Swift-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "libs/**";
 			};
 			name = Release;
 		};

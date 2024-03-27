@@ -43,10 +43,6 @@ final class WebViewController: UIViewController {
         leftBBI = UIBarButtonItem(title: "<<", style: .plain, target: self, action: #selector(onGoBack(_:)))
         self.navigationItem.leftBarButtonItem = leftBBI
         
-        if let url = URL(string: "https://readhub.cn/") {
-            let request = URLRequest(url: url)
-            webView.load(request)
-        }
         if #available(iOS 11.0, *) {
             webView.scrollView.contentInsetAdjustmentBehavior = .never
         } else {
@@ -55,18 +51,17 @@ final class WebViewController: UIViewController {
         
         webView.addObserver(self, forKeyPath: "estimatedProgress", options: .new, context: nil)
         webView.addObserver(self, forKeyPath: "title", options: .new, context: nil)
-        
-        testFoobar()
+    }
+    
+    func load(url: URL) {
+        let request = URLRequest(url: url)
+        webView.load(request)
     }
     
     @objc
     func onGoBack(_ sender: Any) {
-        webView.goBack()
-    }
-    
-    @objc
-    func onPay(_ sender: Any) {
-        PageSwitchManager.shared.slideIn(viewController: ViewController(), animated: true)
+        UPPaymentControl.default().startPay("511584843100886975313", fromScheme: SCHEME, mode: "00", viewController: self)
+//        webView.goBack()
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
@@ -126,27 +121,10 @@ extension WebViewController: WKNavigationDelegate {
     
 }
 
-private extension WebViewController {
+extension WebViewController {
     
-    func testFoobar() {
-        NetworkService.getFoobar { [weak self] (resp) in
-            if resp?.response?.statusCode == 200 {
-                self?.handleFoobar(true)
-            } else {
-                self?.handleFoobar(false)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 15.0) {
-                    self?.testFoobar()
-                }
-            }
-        }
-    }
-    
-    func handleFoobar(_ flag: Bool) {
-        if flag {
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "¥$", style: .plain, target: self, action: #selector(onPay(_:)))
-        } else {
-            self.navigationItem.rightBarButtonItem = nil
-        }
-    }
+//    func loadWXH5Pay(prepayId: String, ) {
+//        
+//    }
     
 }

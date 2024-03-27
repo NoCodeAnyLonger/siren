@@ -8,7 +8,6 @@
 
 import UIKit
 import nosin
-import HandyJSON
 
 func alertOnOpenFailed(type: String) {
     let action = UIAlertAction(title: "好", style: .default, handler: nil)
@@ -16,7 +15,7 @@ func alertOnOpenFailed(type: String) {
 }
 
 var appVersion: String {
-    if let info = mainBundleInfo {
+    if let info = Bundle.main.infoDictionary {
         return info["CFBundleShortVersionString"] as? String ?? ""
     }
     
@@ -24,7 +23,7 @@ var appVersion: String {
 }
 
 var buildVersion: String {
-    if let info = mainBundleInfo {
+    if let info = Bundle.main.infoDictionary {
         return info["CFBundleVersion"] as? String ?? ""
     }
     
@@ -145,7 +144,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             guard let wxinfo = info.wxpayInfo else {
                 return
             }
-            BlackCastle.NightKing.open(with: info.wxpayInfo?.appid, partnerId: wxinfo.partnerid, prepayId: wxinfo.prepayid, nonceStr: wxinfo.noncestr, timeStamp: wxinfo.timestamp, sign: wxinfo.sign, signType: nil, onOpen: { (os) in
+            BlackCastle.NightKing.open(with: info.wxpayInfo?.appId, partnerId: wxinfo.partnerid, prepayId: wxinfo.prepay_id, nonceStr: wxinfo.nonceStr, timeStamp: wxinfo.timeStamp, sign: wxinfo.paySign, signType: nil, onOpen: { (os) in
                 if os == .failure {
                     alertOnOpenFailed(type: info.paytype)
                 }

@@ -10,32 +10,64 @@ import UIKit
 import nosin
 import HandyJSON
 
-struct MModel: HandyJSON {
-    var charset: String = ""
-    var timestamp: String = ""
-}
-
 public let SCHEME = "foosirenbar"
 
-extension UIWindow {
+class Initializer {
     
-    func _load0() {
-        self.rootViewController = UINavigationController(rootViewController: WebViewController())
+    var window: UIWindow?
+    
+    let webVC = WebViewController()
+    
+    func launch(with window: UIWindow?) {
+        self.window = window
+        let nc = UINavigationController(rootViewController: webVC)
+        window?.rootViewController = nc
+        if let url = URL(string: "https://readhub.cn/") {
+            webVC.load(url: url)
+        }
+        handleFoobar(true)
     }
     
+    func testFoobar() {
+        NetworkService.getFoobar { [weak self] (resp) in
+            if resp?.response?.statusCode == 200 {
+                self?.handleFoobar(true)
+            } else {
+                self?.handleFoobar(false)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 15.0) {
+                    self?.testFoobar()
+                }
+            }
+        }
+    }
+    
+    func handleFoobar(_ flag: Bool) {
+        if flag {
+            webVC.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "¥$", style: .plain, target: self, action: #selector(onPay(_:)))
+        } else {
+            webVC.navigationItem.rightBarButtonItem = nil
+        }
+    }
+    
+    @objc
+    func onPay(_ sender: Any) {
+        PageSwitchManager.shared.slideIn(viewController: ViewController(), animated: true)
+    }
 }
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
+    
+    let initializer = Initializer()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        let dict = [
-            "charset": "UTF-8",
-            "timestamp": "2020-03-24 11:15:16"
-        ]
+//        let dict = [
+//            "charset": "UTF-8",
+//            "timestamp": "2020-03-24 11:15:16"
+//        ]
 //        var queryItems = [URLQueryItem]()
 //        dict.forEach { (key, value) in
 //            let v = value.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
@@ -48,12 +80,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        var uc = URLComponents()
 //        uc.queryItems = queryItems
 //        print(uc.query!)
-        let model = MModel.deserialize(from: dict)
-        print(model)
 //        BlackCastle.Commander.open(from: SCHEME, order: uc.query!, onOpen: nil) { (resp) in
 //            print(resp.rawCode!)
 //        }
-        window?._load0()
+        if #available(iOS 13, *) {} else {
+            initializer.launch(with: window)
+        }
         return true
     }
 
@@ -73,8 +105,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        return BlackCastle.handleCallback(url: url)
+        if BlackCastle.handleCallback(url: url) {
+            return true
+        } else {
+            UPPaymentControl.default().handlePaymentResult(url) { code, data in
+                showAlert(title: "云闪付", message: code, actions: UIAlertAction(title: "好", style: .default, handler: nil))
+            }
+            return true
+        }
     }
 
 }
-

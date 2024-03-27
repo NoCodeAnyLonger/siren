@@ -9,13 +9,13 @@
 import HandyJSON
 
 struct WXPayInfo: HandyJSON {
-    let appid: String = ""
+    let appId: String = ""
     let partnerid: String = ""
-    let prepayid: String = ""
-    let timestamp: String = ""
-    let noncestr: String = ""
-    let packagestr: String = ""
-    let sign: String = ""
+    let prepay_id: String = ""
+    let timeStamp: String = ""
+    let nonceStr: String = ""
+    let packageValue: String = ""
+    let paySign: String = ""
     let signType: String = ""
 }
 
