@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import nosin
 
 @available(iOS 13.0, *)
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
@@ -51,6 +52,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
     }
 
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        for uc in URLContexts {
+            if !BlackCastle.handleCallback(url: uc.url) {
+                UPPaymentControl.default().handlePaymentResult(uc.url) { code, data in
+                    showAlert(title: "云闪付", message: code, actions: UIAlertAction(title: "好", style: .default, handler: nil))
+                }
+            }
+        }
+    }
 
 }
 

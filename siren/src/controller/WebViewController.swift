@@ -60,8 +60,8 @@ final class WebViewController: UIViewController {
     
     @objc
     func onGoBack(_ sender: Any) {
-        UPPaymentControl.default().startPay("511584843100886975313", fromScheme: SCHEME, mode: "00", viewController: self)
-//        webView.goBack()
+//        UPPaymentControl.default().startPay("594191447766117011000", fromScheme: SCHEME, mode: "00", viewController: self)
+        webView.goBack()
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {

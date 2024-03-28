@@ -171,6 +171,16 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
                     self?.handleSuccess(payInfo: info)
                 }
             }
+        } else if info.paytype == "云闪付" {
+            guard let tn = info.uppayInfo?.tn else {
+                showAlert(title: nil, message: "云闪付订单错误", actions: UIAlertAction(title: "好", style: .cancel, handler: nil))
+                return
+            }
+            guard UPPaymentControl.default().isPaymentAppInstalled() else {
+                alertOnOpenFailed(type: info.paytype)
+                return
+            }
+            UPPaymentControl.default().startPay(tn, fromScheme: SCHEME, mode: "00", viewController: self)
         }
     }
     

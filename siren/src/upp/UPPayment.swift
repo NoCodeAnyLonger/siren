@@ -8,7 +8,7 @@
 
 import Foundation
 
-
+/*
 
 final class UPPayment {
     
@@ -56,3 +56,5 @@ final class UPPayment {
     }
     
 }
+
+*/

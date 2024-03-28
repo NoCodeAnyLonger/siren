@@ -19,6 +19,10 @@ struct WXPayInfo: HandyJSON {
     let signType: String = ""
 }
 
+struct UPPayInfo: HandyJSON {
+    let tn: String = ""
+}
+
 class PayInfo: HandyJSON {
     
     enum OrderStatus: Int, HandyJSONEnum {
@@ -78,7 +82,16 @@ class PayInfo: HandyJSON {
         }
     }
     
+    var uppayInfo: UPPayInfo? {
+        if let dict = payinfo as? Dictionary<String, Any> {
+            return UPPayInfo.deserialize(from: dict)
+        } else if let str = payinfo as? String {
+            return UPPayInfo.deserialize(from: str)
+        } else {
+            return nil
+        }
+    }
+    
     required init() {
-        
     }
 }
