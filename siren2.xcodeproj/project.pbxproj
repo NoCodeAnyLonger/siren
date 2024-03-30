@@ -105,7 +105,7 @@
 		222DFC1C2BB7B6940083710B /* BlackCastle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlackCastle.swift; sourceTree = "<group>"; };
 		222DFC1D2BB7B6940083710B /* BlackCastleInternal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlackCastleInternal.swift; sourceTree = "<group>"; };
 		2295D6C92429E02C009B2E16 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
-		22FAE2D5241F671C004DAE8F /* siren.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = siren.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		22FAE2D5241F671C004DAE8F /* siren2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = siren2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22FAE2D8241F671C004DAE8F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22FAE2DA241F671C004DAE8F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		22FAE2DC241F671C004DAE8F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -243,7 +243,7 @@
 		22FAE2D6241F671C004DAE8F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				22FAE2D5241F671C004DAE8F /* siren.app */,
+				22FAE2D5241F671C004DAE8F /* siren2.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -341,9 +341,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		22FAE2D4241F671C004DAE8F /* siren */ = {
+		22FAE2D4241F671C004DAE8F /* siren2 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 22FAE2E9241F6721004DAE8F /* Build configuration list for PBXNativeTarget "siren" */;
+			buildConfigurationList = 22FAE2E9241F6721004DAE8F /* Build configuration list for PBXNativeTarget "siren2" */;
 			buildPhases = (
 				22FAE2D1241F671C004DAE8F /* Sources */,
 				22FAE2D2241F671C004DAE8F /* Frameworks */,
@@ -353,9 +353,9 @@
 			);
 			dependencies = (
 			);
-			name = siren;
+			name = siren2;
 			productName = siren;
-			productReference = 22FAE2D5241F671C004DAE8F /* siren.app */;
+			productReference = 22FAE2D5241F671C004DAE8F /* siren2.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -373,7 +373,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 22FAE2D0241F671C004DAE8F /* Build configuration list for PBXProject "siren" */;
+			buildConfigurationList = 22FAE2D0241F671C004DAE8F /* Build configuration list for PBXProject "siren2" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -386,7 +386,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				22FAE2D4241F671C004DAE8F /* siren */,
+				22FAE2D4241F671C004DAE8F /* siren2 */,
 			);
 		};
 /* End PBXProject section */
@@ -602,12 +602,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 66;
-				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 28K64WM5WW;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 59;
+				DEVELOPMENT_TEAM = 6B922T785Z;
 				INFOPLIST_FILE = siren/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = siren3;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -618,10 +617,9 @@
 					"$(PROJECT_DIR)/libs/UPPaymentControl",
 				);
 				MARKETING_VERSION = 1.0.1;
-				PRODUCT_BUNDLE_IDENTIFIER = foo.bar.siren3;
+				PRODUCT_BUNDLE_IDENTIFIER = foo.bar.siren2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = Schbrain_WC_PP;
 				SWIFT_OBJC_BRIDGING_HEADER = "siren/src/bridge/Swift-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -634,12 +632,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 66;
-				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 28K64WM5WW;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 59;
+				DEVELOPMENT_TEAM = 6B922T785Z;
 				INFOPLIST_FILE = siren/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = siren3;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -650,10 +647,9 @@
 					"$(PROJECT_DIR)/libs/UPPaymentControl",
 				);
 				MARKETING_VERSION = 1.0.1;
-				PRODUCT_BUNDLE_IDENTIFIER = foo.bar.siren3;
+				PRODUCT_BUNDLE_IDENTIFIER = foo.bar.siren2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = Schbrain_WC_PP;
 				SWIFT_OBJC_BRIDGING_HEADER = "siren/src/bridge/Swift-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -664,7 +660,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		22FAE2D0241F671C004DAE8F /* Build configuration list for PBXProject "siren" */ = {
+		22FAE2D0241F671C004DAE8F /* Build configuration list for PBXProject "siren2" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				22FAE2E7241F6721004DAE8F /* Debug */,
@@ -673,7 +669,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		22FAE2E9241F6721004DAE8F /* Build configuration list for PBXNativeTarget "siren" */ = {
+		22FAE2E9241F6721004DAE8F /* Build configuration list for PBXNativeTarget "siren2" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				22FAE2EA241F6721004DAE8F /* Debug */,

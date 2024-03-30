@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "22FAE2D4241F671C004DAE8F"
-               BuildableName = "siren.app"
-               BlueprintName = "siren"
-               ReferencedContainer = "container:siren.xcodeproj">
+               BuildableName = "siren2.app"
+               BlueprintName = "siren2"
+               ReferencedContainer = "container:siren2.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,9 +45,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "22FAE2D4241F671C004DAE8F"
-            BuildableName = "siren.app"
-            BlueprintName = "siren"
-            ReferencedContainer = "container:siren.xcodeproj">
+            BuildableName = "siren2.app"
+            BlueprintName = "siren2"
+            ReferencedContainer = "container:siren2.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "22FAE2D4241F671C004DAE8F"
-            BuildableName = "siren.app"
-            BlueprintName = "siren"
-            ReferencedContainer = "container:siren.xcodeproj">
+            BuildableName = "siren2.app"
+            BlueprintName = "siren2"
+            ReferencedContainer = "container:siren2.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
