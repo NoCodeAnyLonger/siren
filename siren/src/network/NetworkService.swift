@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import HandyJSON
 import Alamofire
 
 extension Encodable {
@@ -30,7 +29,7 @@ extension AFDataResponse {
     }
 }
 
-struct Response<D>: HandyJSON {
+struct Response<D: Decodable>: Decodable {
     var result: String = ""
     var msg: String = ""
     var data: D?
@@ -73,7 +72,7 @@ enum MErrorCode: Int {
 
 struct NetworkService {
     
-    typealias Success<T> = (T?) -> Void
+    typealias Success<T: Decodable> = (T?) -> Void
     
     typealias Failure = (Error) -> Void
     
@@ -81,7 +80,7 @@ struct NetworkService {
     
     static var authErrorHandler: ((Error) -> Void)?
     
-    private static func handle<T>(resp: AFDataResponse<Any>, success: Success<T>?, failure: Failure?) {
+    private static func handle<T: Decodable>(resp: AFDataResponse<Any>, success: Success<T>?, failure: Failure?) {
         if let value = resp.value as? Parameters, let r = Response<T>.parse(from: value) {
             if r.isSuccessful {
                 success?(r.data)
@@ -111,7 +110,7 @@ struct NetworkService {
         start(request: req, success: success, failure: failure)
     }
     
-    static func updateOrder(with orderId: String, status: PayInfo.OrderStatus, success: Success<Any>?, failure: Failure?) {
+    static func updateOrder(with orderId: String, status: PayInfo.OrderStatus, success: Success<WhateverDecodable>?, failure: Failure?) {
         var req = Request.def(path: "/pay/update")
         req.queryParams = ["orderid": orderId, "status": status.rawValue]
         start(request: req, success: success, failure: failure)
@@ -160,7 +159,7 @@ extension NetworkService {
             })
             request.addValue("application/json", forHTTPHeaderField: "accept")
             var params = queryParams ?? [:]
-            if let JSON = auth.toJSON() {
+            if let JSON = auth.toDictionary() {
                 params.merge(JSON) { (v0, v1) -> Any in
                     return v0
                 }

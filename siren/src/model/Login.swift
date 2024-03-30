@@ -7,13 +7,12 @@
 //
 
 import Foundation
-import HandyJSON
 
 private let kLoginUsername = "kLoginUsername"
 
 private let kLoginPassword = "kLoginPassword"
 
-struct Login: HandyJSON {
+struct Login: Codable {
     
     var user: String = ""
     

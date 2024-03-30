@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2220BD8B2BB3C883007B49C0 /* UPPayment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2220BD8A2BB3C883007B49C0 /* UPPayment.swift */; };
 		2220BD962BB3CC54007B49C0 /* libPaymentControlMini.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2220BD932BB3CC54007B49C0 /* libPaymentControlMini.a */; };
+		222DFBFA2BB7A8940083710B /* CodableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222DFBF92BB7A8940083710B /* CodableExtension.swift */; };
 		2295D6CA2429E02C009B2E16 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2295D6C92429E02C009B2E16 /* WebViewController.swift */; };
 		22FAE2D9241F671C004DAE8F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FAE2D8241F671C004DAE8F /* AppDelegate.swift */; };
 		22FAE2DB241F671C004DAE8F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FAE2DA241F671C004DAE8F /* SceneDelegate.swift */; };
@@ -36,6 +37,7 @@
 		2220BD8F2BB3CBF3007B49C0 /* UPPaymentControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UPPaymentControl.h; sourceTree = "<group>"; };
 		2220BD932BB3CC54007B49C0 /* libPaymentControlMini.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libPaymentControlMini.a; sourceTree = "<group>"; };
 		2220BD942BB3CC54007B49C0 /* UPPaymentControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPPaymentControl.h; sourceTree = "<group>"; };
+		222DFBF92BB7A8940083710B /* CodableExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodableExtension.swift; sourceTree = "<group>"; };
 		2295D6C92429E02C009B2E16 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		22FAE2D5241F671C004DAE8F /* siren.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = siren.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22FAE2D8241F671C004DAE8F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 		22FAE2F0241F6C1A004DAE8F /* model */ = {
 			isa = PBXGroup;
 			children = (
+				222DFBF92BB7A8940083710B /* CodableExtension.swift */,
 				22FAE2F1241F6C25004DAE8F /* Login.swift */,
 				22FAE30624235EE9004DAE8F /* PayInfo.swift */,
 			);
@@ -341,6 +344,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				222DFBFA2BB7A8940083710B /* CodableExtension.swift in Sources */,
 				22FAE2FD2420DCD0004DAE8F /* ImageScanController.swift in Sources */,
 				22FAE2F524206C94004DAE8F /* PayInfoCell.swift in Sources */,
 				22FAE2DD241F671C004DAE8F /* ViewController.swift in Sources */,

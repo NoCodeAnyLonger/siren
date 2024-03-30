@@ -144,7 +144,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             guard let wxinfo = info.wxpayInfo else {
                 return
             }
-            BlackCastle.NightKing.open(with: info.wxpayInfo?.appId, partnerId: wxinfo.partnerid, prepayId: wxinfo.prepay_id, nonceStr: wxinfo.nonceStr, timeStamp: wxinfo.timeStamp, sign: wxinfo.paySign, signType: nil, onOpen: { (os) in
+            BlackCastle.NightKing.open(with: info.wxpayInfo?.appid, partnerId: wxinfo.partnerid, prepayId: wxinfo.prepayid, nonceStr: wxinfo.noncestr, timeStamp: wxinfo.timestamp, sign: wxinfo.sign, signType: nil, onOpen: { (os) in
                 if os == .failure {
                     alertOnOpenFailed(type: info.paytype)
                 }

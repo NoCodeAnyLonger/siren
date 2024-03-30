@@ -8,7 +8,6 @@
 
 import UIKit
 import nosin
-import HandyJSON
 
 public let SCHEME = "foosirenbar"
 

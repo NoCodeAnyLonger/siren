@@ -6,26 +6,23 @@
 //  Copyright © 2020 danqin chu. All rights reserved.
 //
 
-import HandyJSON
-
-struct WXPayInfo: HandyJSON {
-    let appId: String = ""
-    let partnerid: String = ""
-    let prepay_id: String = ""
-    let timeStamp: String = ""
-    let nonceStr: String = ""
-    let packageValue: String = ""
-    let paySign: String = ""
-    let signType: String = ""
+struct WXPayInfo: Decodable {
+    var appid: String = ""
+    var partnerid: String = ""
+    var prepayid: String = ""
+    var timestamp: String = ""
+    var noncestr: String = ""
+    var package: String = ""
+    var sign: String = ""
 }
 
-struct UPPayInfo: HandyJSON {
-    let tn: String = ""
+struct UPPayInfo: Decodable {
+    var tn: String = ""
 }
 
-class PayInfo: HandyJSON {
+class PayInfo: Decodable {
     
-    enum OrderStatus: Int, HandyJSONEnum {
+    enum OrderStatus: Int, Decodable {
         case unpaid = 0
         case paying = 1
         case paid = 2
@@ -55,27 +52,38 @@ class PayInfo: HandyJSON {
                 return UIColor(hex: 0x999999)
             }
         }
+        
+        init(from decoder: any Decoder) throws {
+            let value = try decoder.singleValueContainer().decode(String.self)
+            if var intValue = Int(value) {
+                if intValue > 2 || intValue < 0 {
+                    intValue = 0
+                }
+                self.init(rawValue: intValue)!
+            } else {
+                self.init(rawValue: 0)!
+            }
+        }
+        
     }
     
-    let user: String = ""
-    let title: String = ""
-    let paytype: String = ""
-    let payinfo: Any? = nil
-    let ordertime: String = ""
-    let sign: String? = nil
-    let num: Any? = nil
-    let order_id: String = ""
+    var user: String = ""
+    var title: String = ""
+    var paytype: String = ""
+    var payinfo: String? = nil
+    var ordertime: String = ""
+    var sign: String? = nil
+//    var num: Any? = nil
+    var order_id: String = ""
     var status: OrderStatus = .paying
-    let money: String = ""
+    var money: String = ""
     
     var alipayInfo: String? {
-        return payinfo as? String
+        return payinfo
     }
     
     var wxpayInfo: WXPayInfo? {
-        if let dict = payinfo as? Dictionary<String, Any> {
-            return WXPayInfo.deserialize(from: dict)
-        } else if let str = payinfo as? String {
+        if let str = payinfo {
             return WXPayInfo.deserialize(from: str)
         } else {
             return nil
@@ -83,9 +91,7 @@ class PayInfo: HandyJSON {
     }
     
     var uppayInfo: UPPayInfo? {
-        if let dict = payinfo as? Dictionary<String, Any> {
-            return UPPayInfo.deserialize(from: dict)
-        } else if let str = payinfo as? String {
+        if let str = payinfo {
             return UPPayInfo.deserialize(from: str)
         } else {
             return nil

@@ -6,9 +6,9 @@ target 'siren' do
   use_frameworks!
 
   # Pods for siren
-	pod 'Alamofire'
+  pod 'Alamofire'
   pod 'nosin'
-  pod 'HandyJSON'
+  # pod 'HandyJSON'
   
   post_install do |installer|
     installer.pods_project.build_configurations.each do |config|

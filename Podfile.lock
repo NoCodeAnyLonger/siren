@@ -1,24 +1,20 @@
 PODS:
   - Alamofire (5.0.4)
-  - HandyJSON (5.0.1)
   - nosin (0.2.0)
 
 DEPENDENCIES:
   - Alamofire
-  - HandyJSON
   - nosin
 
 SPEC REPOS:
   trunk:
     - Alamofire
-    - HandyJSON
     - nosin
 
 SPEC CHECKSUMS:
   Alamofire: 0fe5fd24b4298dc377a6550da7d5f1b30e286fcb
-  HandyJSON: d45b8415c501e3affc59ca9762c1197ff0feb646
   nosin: a9d9846c9cf17b59eeadfd12cb53680d5408f054
 
-PODFILE CHECKSUM: b99c5f9d5cec5ca3f631796bb67a298c4f42d280
+PODFILE CHECKSUM: 1423e9bef7cfd066d3c7672402602b871f48f922
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.15.2
