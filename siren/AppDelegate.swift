@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import nosin
 
 public let SCHEME = "foosirenbar"
 

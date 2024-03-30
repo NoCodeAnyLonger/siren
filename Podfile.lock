@@ -1,20 +1,3 @@
-PODS:
-  - Alamofire (5.0.4)
-  - nosin (0.2.0)
-
-DEPENDENCIES:
-  - Alamofire
-  - nosin
-
-SPEC REPOS:
-  trunk:
-    - Alamofire
-    - nosin
-
-SPEC CHECKSUMS:
-  Alamofire: 0fe5fd24b4298dc377a6550da7d5f1b30e286fcb
-  nosin: a9d9846c9cf17b59eeadfd12cb53680d5408f054
-
-PODFILE CHECKSUM: 1423e9bef7cfd066d3c7672402602b871f48f922
+PODFILE CHECKSUM: 75ee0677ee06df51db2f3e67bf5c4e01826a4a55
 
 COCOAPODS: 1.15.2

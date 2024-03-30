@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Alamofire
 
 extension Encodable {
     var JSON: [String: Any]? {

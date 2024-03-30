@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import nosin
 
 func alertOnOpenFailed(type: String) {
     let action = UIAlertAction(title: "好", style: .default, handler: nil)
