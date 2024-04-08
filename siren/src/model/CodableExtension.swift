@@ -10,7 +10,7 @@ import Foundation
 
 extension Encodable {
     
-    func toDictionary() -> Dictionary<String, Any>? {
+    func toJSON() -> Dictionary<String, Any>? {
         do {
             let encoder = JSONEncoder()
             let jsonData = try encoder.encode(self)
@@ -58,5 +58,40 @@ extension Decodable {
 
 
 struct WhateverDecodable: Decodable {
+}
+
+extension Dictionary {
+    
+    static func initialize(from str: String) -> Dictionary<Key, Value>? {
+        do {
+            if let jsonData = str.data(using: .utf8) {
+                let dict = try JSONSerialization.jsonObject(with: jsonData)
+                return dict as? Dictionary<Key, Value>
+            } else {
+                return nil
+            }
+        } catch {
+            print("Dictionary initialize error:", error.localizedDescription, "string: \(str)")
+            return nil
+        }
+    }
+    
+    func optionalValueForKeys<T>(_ keys: [Key], defaultValue: T? = nil) -> T? {
+        for k in keys {
+            if let v = self[k] {
+                return v as? T
+            }
+        }
+        return defaultValue
+    }
+    
+    func valueForKeys<T>(_ keys: [Key], defaultValue: T) -> T {
+        for k in keys {
+            if let v = self[k] as? T {
+                return v
+            }
+        }
+        return defaultValue
+    }
     
 }

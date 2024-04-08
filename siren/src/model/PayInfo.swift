@@ -12,8 +12,35 @@ struct WXPayInfo: Decodable {
     var prepayid: String = ""
     var timestamp: String = ""
     var noncestr: String = ""
-    var package: String = ""
+//    var package: String = "" // package -> packageValue
     var sign: String = ""
+    var signType: String = ""
+    var packageValue = ""
+    
+    static func initialize(from str: String) -> WXPayInfo? {
+        if let dict: [String: Any] = Dictionary.initialize(from: str) {
+            let appId = dict.valueForKeys(["appid", "appId"], defaultValue: "")
+            let partnerId = dict.valueForKeys(["partnerid", "partnerId"], defaultValue: "")
+            let prepayId = dict.valueForKeys(["prepayid", "prepayId"], defaultValue: "")
+            let timestamp = dict.valueForKeys(["timestamp", "timeStamp"], defaultValue: "")
+            let nonceStr = dict.valueForKeys(["noncestr", "nonceStr"], defaultValue: "")
+            let sign = dict.valueForKeys(["sign"], defaultValue: "")
+            let signType = dict.valueForKeys(["signType"], defaultValue: "")
+            let packageValue = dict.valueForKeys(["package", "packageValue"], defaultValue: "")
+            return WXPayInfo(
+                appid: appId,
+                partnerid: partnerId,
+                prepayid: prepayId,
+                timestamp: timestamp,
+                noncestr: nonceStr,
+                sign: sign,
+                signType: signType,
+                packageValue: packageValue
+            )
+        } else {
+            return nil
+        }
+    }
 }
 
 struct UPPayInfo: Decodable {
@@ -84,7 +111,7 @@ class PayInfo: Decodable {
     
     var wxpayInfo: WXPayInfo? {
         if let str = payinfo {
-            return WXPayInfo.deserialize(from: str)
+            return WXPayInfo.initialize(from: str)
         } else {
             return nil
         }

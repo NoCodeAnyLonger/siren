@@ -141,9 +141,10 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         handlePaying(payInfo: info)
         if info.paytype == "微信" {
             guard let wxinfo = info.wxpayInfo else {
+                showAlert(title: nil, message: "微信订单错误", actions: UIAlertAction(title: "好", style: .cancel, handler: nil))
                 return
             }
-            BlackCastle.NightKing.open(with: info.wxpayInfo?.appid, partnerId: wxinfo.partnerid, prepayId: wxinfo.prepayid, nonceStr: wxinfo.noncestr, timeStamp: wxinfo.timestamp, sign: wxinfo.sign, signType: nil, onOpen: { (os) in
+            BlackCastle.NightKing.open(with: wxinfo.appid, partnerId: wxinfo.partnerid, prepayId: wxinfo.prepayid, nonceStr: wxinfo.noncestr, timeStamp: wxinfo.timestamp, sign: wxinfo.sign, signType: wxinfo.signType, onOpen: { (os) in
                 if os == .failure {
                     alertOnOpenFailed(type: info.paytype)
                 }

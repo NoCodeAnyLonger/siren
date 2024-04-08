@@ -158,7 +158,7 @@ extension NetworkService {
             })
             request.addValue("application/json", forHTTPHeaderField: "accept")
             var params = queryParams ?? [:]
-            if let JSON = auth.toDictionary() {
+            if let JSON = auth.toJSON() {
                 params.merge(JSON) { (v0, v1) -> Any in
                     return v0
                 }
