@@ -7,13 +7,21 @@
 //
 
 struct WXPayInfo: Decodable {
+    //var appid: String = ""
+    //var partnerid: String = ""
+    //var prepayid: String = ""
+    //var timestamp: String = ""
+    //var noncestr: String = ""
+   // var package: String = ""
+    //var sign: String = ""
     var appid: String = ""
     var partnerid: String = ""
     var prepayid: String = ""
     var timestamp: String = ""
     var noncestr: String = ""
-    var package: String = ""
+    var packageValue: String = ""
     var sign: String = ""
+    var signType: String = ""
 }
 
 struct UPPayInfo: Decodable {
