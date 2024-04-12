@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1530"
-   version = "1.7">
+   LastUpgradeVersion = "1140"
+   version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
-      buildImplicitDependencies = "YES"
-      buildArchitectures = "Automatic">
+      buildImplicitDependencies = "YES">
       <BuildActionEntries>
          <BuildActionEntry
             buildForTesting = "YES"
@@ -16,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "22FAE2D4241F671C004DAE8F"
-               BuildableName = "siren0.app"
-               BlueprintName = "siren0"
-               ReferencedContainer = "container:siren.xcodeproj">
+               BuildableName = "siren2.app"
+               BlueprintName = "siren2"
+               ReferencedContainer = "container:siren2.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -27,8 +26,9 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES"
-      shouldAutocreateTestPlan = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES">
+      <Testables>
+      </Testables>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -45,9 +45,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "22FAE2D4241F671C004DAE8F"
-            BuildableName = "siren0.app"
-            BlueprintName = "siren0"
-            ReferencedContainer = "container:siren.xcodeproj">
+            BuildableName = "siren2.app"
+            BlueprintName = "siren2"
+            ReferencedContainer = "container:siren2.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "22FAE2D4241F671C004DAE8F"
-            BuildableName = "siren0.app"
-            BlueprintName = "siren0"
-            ReferencedContainer = "container:siren.xcodeproj">
+            BuildableName = "siren2.app"
+            BlueprintName = "siren2"
+            ReferencedContainer = "container:siren2.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
