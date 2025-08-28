@@ -1,0 +1,33 @@
+{
+  "originHash" : "f1d17a3e7f2208b5924b05739aea8f860aae595d07f698820cf92064840c702e",
+  "pins" : [
+    {
+      "identity" : "alamofire",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Alamofire/Alamofire.git",
+      "state" : {
+        "revision" : "513364f870f6bfc468f9d2ff0a95caccc10044c5",
+        "version" : "5.10.2"
+      }
+    },
+    {
+      "identity" : "smartcodable",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/iAmMccc/SmartCodable.git",
+      "state" : {
+        "revision" : "1eae39ab33266a8232867c1255016430511fe274",
+        "version" : "5.1.2"
+      }
+    },
+    {
+      "identity" : "swift-syntax",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/swiftlang/swift-syntax",
+      "state" : {
+        "revision" : "0687f71944021d616d34d922343dcef086855920",
+        "version" : "600.0.1"
+      }
+    }
+  ],
+  "version" : 3
+}
