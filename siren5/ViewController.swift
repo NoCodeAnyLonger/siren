@@ -142,9 +142,10 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         switch info.payChannel {
         case .wechat:
             guard let wxinfo = info.wxpayInfo else {
+                showAlert(title: nil, message: "微信订单格式错误", actions: UIAlertAction(title: "好", style: .cancel, handler: nil))
                 return
             }
-            BlackCastle.NightKing.open(with: info.wxpayInfo?.appId, partnerId: wxinfo.partnerid, prepayId: wxinfo.prepay_id, nonceStr: wxinfo.nonceStr, timeStamp: wxinfo.timeStamp, sign: wxinfo.paySign, signType: nil, onOpen: { (os) in
+            BlackCastle.NightKing.open(with: wxinfo.appId, partnerId: wxinfo.partnerId, prepayId: wxinfo.prepayId, nonceStr: wxinfo.nonceStr, timeStamp: wxinfo.timestamp, sign: wxinfo.sign, signType: wxinfo.signType, onOpen: { (os) in
                 if os == .failure {
                     alertOnOpenFailed(type: info.paytype)
                 }
@@ -157,7 +158,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             }
         case .ali:
             guard let order = info.alipayInfo else {
-                showAlert(title: nil, message: "支付宝订单错误", actions: UIAlertAction(title: "好", style: .cancel, handler: nil))
+                showAlert(title: nil, message: "支付宝订单格式错误", actions: UIAlertAction(title: "好", style: .cancel, handler: nil))
                 return
             }
             BlackCastle.Commander.open(from: SCHEME, order: order, onOpen: { (os) in

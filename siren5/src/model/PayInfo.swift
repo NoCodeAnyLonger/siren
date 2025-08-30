@@ -10,22 +10,35 @@ import UIKit
 import SmartCodable
 
 struct WXPayInfo: APIModel {
-    var app_id = ""
-    var nonce_str = ""
-    var package = ""
-    var partner_id = ""
-    var prepay_id = ""
-    var sign = ""
-    var time_stamp = ""
+//    var app_id = ""
+//    var nonce_str = ""
+//    var package = ""
+//    var partner_id = ""
+//    var prepay_id = ""
+//    var sign = ""
+//    var time_stamp = ""
     
-    var appId: String { app_id }
-    var partnerid: String { partner_id }
-//    var prepay_id: String = ""
-    var timeStamp: String { time_stamp }
-    var nonceStr: String { nonce_str }
-    var packageValue: String { package }
-    var paySign: String { sign }
-//    var signType: String = ""
+    var appId: String = ""
+    var partnerId: String = ""
+    var prepayId: String = ""
+    var timestamp: String = ""
+    var nonceStr: String = ""
+    var package: String = ""
+    var sign: String = ""
+    var signType: String?
+    
+    static func mappingForKey() -> [SmartKeyTransformer]? {
+        [
+            CodingKeys.appId <--- ["app_id", "appId"],
+            CodingKeys.nonceStr <--- ["nonce_str", "nonceStr"],
+            CodingKeys.partnerId <--- ["partner_id", "partnerId"],
+            CodingKeys.package <--- ["package", "packageValue"],
+            CodingKeys.prepayId <--- ["prepay_id", "prepayId", "prePayId"],
+            CodingKeys.timestamp <--- ["time_stamp", "timeStamp"],
+            CodingKeys.sign <--- ["sign", "paySign"],
+            CodingKeys.signType <--- ["sign_type", "signType"],
+        ]
+    }
 }
 
 final class PayInfo: APIModel {
