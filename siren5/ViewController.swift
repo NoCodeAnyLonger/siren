@@ -78,9 +78,21 @@ class ViewController: UIViewController {
         tableView.frame = self.view.bounds
     }
     
+    static func loadData() -> [PayInfo] {
+        if arc4random() % 2 == 0 {
+            return []
+        }
+        return [
+            PayInfo(),
+            PayInfo(),
+            PayInfo(),
+        ]
+    }
+    
     func refreshOrders() {
         NetworkService.queryOrders(success: { (value) in
-            self.data = value ?? []
+            //self.data = value ?? []
+            self.data = Self.loadData()
             self.sortPayInfos()
             self.tableView.reloadData()
             if self.data.count == 0 {
